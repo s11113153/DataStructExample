@@ -42,8 +42,12 @@ protected:
     virtual void insert(Data *node) throw(IllegalException);
     // insert of speficis position
     virtual void insert(char const * name, Data *node) throw(IllegalException);
+
+    virtual void deleteFirst() throw(IllegalException);
+
     // print all fo the nodes
     virtual void printNodes() const;
+
    } impl;  
   
 public:    

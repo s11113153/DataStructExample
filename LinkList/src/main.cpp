@@ -45,7 +45,10 @@ int main(int argc, char const *argv[]) {
       imp->insert(&node_5);
       imp->insert("1", &node_6);
       imp->insert("A3", &node_6);
+      imp->deleteFirst();  
+      imp->deleteFirst();
       imp->printNodes();    
+
     } catch(IllegalException e) {
       e.whatMsg();
     }        

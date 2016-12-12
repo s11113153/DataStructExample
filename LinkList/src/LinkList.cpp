@@ -64,6 +64,10 @@ void HsuLinkList::LinkList::Impl::insert(char const * name, Data *node) throw(Il
   printf("Insert is fail, data \"%s\": not found !!!\n", name);
 }
 
+void HsuLinkList::LinkList::Impl::deleteFirst() throw(IllegalException) {
+  if (!isInitializeHeader()) throw IllegalException("head is null");  
+  head = head->next;
+}
 
 void HsuLinkList::LinkList::Impl::printNodes() const {
   Data *ptr = head;
