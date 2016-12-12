@@ -20,6 +20,7 @@ HsuLinkList::LinkList::Impl::Impl() {
 HsuLinkList::LinkList::Impl::~Impl() {  
   head = NULL;  
   delete head;
+  printf("head is deleted %p\n", head);
 }
 
 void HsuLinkList::LinkList::Impl::createHeader(Data **root) {        
@@ -47,7 +48,20 @@ void HsuLinkList::LinkList::Impl::insert(Data *node) throw(IllegalException) {
 }
 
 void HsuLinkList::LinkList::Impl::insert(char const * name, Data *node) throw(IllegalException) {
-  
+  Data *ptr = head;
+  while(ptr != NULL) {
+    // found specifics data and insert it to behind
+    if ( strncmp(ptr->name, name, sizeof(ptr->name) )== 0) {            
+      node->next = ptr->next;
+      ptr->next = node;
+      return;
+    }
+    ptr = ptr->next;
+  }
+
+  // if the name is found, just return and interrupt
+  // else print message
+  printf("Insert is fail, data \"%s\": not found !!!\n", name);
 }
 
 

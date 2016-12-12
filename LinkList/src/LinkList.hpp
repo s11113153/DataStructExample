@@ -5,7 +5,8 @@
 extern "C" {
 #endif
 // using c lib
-#include <stdio.h>
+#include <stdio.h>  
+#include <string.h>
 #include "../data/Data.h"
 #ifdef __cplusplus
 }
@@ -16,6 +17,7 @@ extern "C" {
 #include "../interface/AbsListFactory.hpp"
 #include <stdexcept> 
 #include <functional>
+
 
 namespace HsuLinkList {
 class LinkList {
