@@ -46,6 +46,9 @@ protected:
     virtual void deleteFirst() throw(IllegalException);
     // delete at last data
     virtual void deleteAtLast() throw(IllegalException);
+    // delete the data with the specified name
+    virtual void deleteDataWithSpecificedName(char const * name) throw(IllegalException);
+
     // print all fo the nodes
     virtual void printNodes() const;
 

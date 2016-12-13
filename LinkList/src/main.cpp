@@ -48,11 +48,9 @@ int main(int argc, char const *argv[]) {
       imp->deleteFirst();  
       imp->deleteFirst();
       imp->deleteAtLast();
-      imp->deleteAtLast();
-      imp->deleteAtLast();
-      imp->deleteAtLast();
-      imp->deleteAtLast();
-      imp->deleteAtLast();
+      imp->deleteDataWithSpecificedName("A1");
+      imp->deleteDataWithSpecificedName("A6");
+      imp->deleteDataWithSpecificedName("A4");
       imp->printNodes();          
     } catch(IllegalException e) {
       e.whatMsg();

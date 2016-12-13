@@ -73,10 +73,12 @@ void HsuLinkList::LinkList::Impl::deleteAtLast() throw(IllegalException) {
   if (!isInitializeHeader()) throw IllegalException("delete at last fail");        
   Data *ptr = head;
   Data *previous = head;
+
+  //move to the previous position of the last data
   while(ptr->next != NULL) { ptr = ptr->next; }  
   
   // previous = head = ptr
-  // head = null  
+  // head = null  // or call deleteFirst();
   if (previous == ptr && previous == head) {
     Data **p = &head;
     *p = NULL;
@@ -88,6 +90,34 @@ void HsuLinkList::LinkList::Impl::deleteAtLast() throw(IllegalException) {
     }  
     previous->next = NULL;   
   } 
+}
+
+void HsuLinkList::LinkList::Impl::deleteDataWithSpecificedName(char const * name) throw(IllegalException) {
+  Data *ptr = head;
+  Data *previous = head;
+  bool isFound = false;
+
+  // search specified name in linklist
+  while(ptr != NULL) {    
+    if (strncmp(ptr->name, name, sizeof(ptr->name)) == 0) {
+      isFound = true;      
+      break;      
+    }
+    ptr = ptr->next;    
+  }    
+  
+  if (!isFound) {
+    printf("%s\n", "not found name");
+    return;
+  }
+  
+  if (ptr == previous) { deleteFirst(); }
+  else {
+    while(previous->next != ptr) {
+      previous = previous->next;
+    }  
+    previous->next = ptr->next;
+  }
 }
 
 void HsuLinkList::LinkList::Impl::printNodes() const {
