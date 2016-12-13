@@ -25,6 +25,7 @@ public:
   virtual void deleteFirst() throw(IllegalException) = 0;
   virtual void deleteAtLast() throw(IllegalException) = 0;
   virtual void deleteDataWithSpecificedName(char const * name) throw(IllegalException) = 0;
+  virtual void reverse() throw(IllegalException) = 0;
 };
 
 #endif // ABS_LIST_FACTORY_H

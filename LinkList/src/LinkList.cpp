@@ -120,6 +120,20 @@ void HsuLinkList::LinkList::Impl::deleteDataWithSpecificedName(char const * name
   }
 }
 
+void HsuLinkList::LinkList::Impl::reverse() throw(IllegalException) {
+  Data *p = head;
+  Data *q = NULL;
+  Data *r = NULL;
+
+  while(p != NULL) {      
+    r = q;
+    q = p;
+    p = p->next;
+    q->next = r;
+  }
+  head = q;
+}
+
 void HsuLinkList::LinkList::Impl::printNodes() const {
   Data *ptr = head;
   printf("%s\n", "====================================");

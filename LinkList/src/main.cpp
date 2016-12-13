@@ -51,6 +51,7 @@ int main(int argc, char const *argv[]) {
       imp->deleteDataWithSpecificedName("A1");
       imp->deleteDataWithSpecificedName("A6");
       imp->deleteDataWithSpecificedName("A4");
+      imp->reverse();
       imp->printNodes();          
     } catch(IllegalException e) {
       e.whatMsg();
