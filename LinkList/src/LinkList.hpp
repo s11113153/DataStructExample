@@ -33,7 +33,7 @@ protected:
     // checking header whether initialize
     std::function<bool()> isInitializeHeader = [=]() -> bool {
       return (this->head == NULL) ? false : true;      
-    };
+    };    
     // createing a new first header
     virtual void createHeader(Data **root);         
     // add for first
@@ -42,9 +42,10 @@ protected:
     virtual void insert(Data *node) throw(IllegalException);
     // insert of speficis position
     virtual void insert(char const * name, Data *node) throw(IllegalException);
-
+    // delete first data
     virtual void deleteFirst() throw(IllegalException);
-
+    // delete at last data
+    virtual void deleteAtLast() throw(IllegalException);
     // print all fo the nodes
     virtual void printNodes() const;
 

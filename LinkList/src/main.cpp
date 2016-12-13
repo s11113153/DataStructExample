@@ -47,8 +47,13 @@ int main(int argc, char const *argv[]) {
       imp->insert("A3", &node_6);
       imp->deleteFirst();  
       imp->deleteFirst();
-      imp->printNodes();    
-
+      imp->deleteAtLast();
+      imp->deleteAtLast();
+      imp->deleteAtLast();
+      imp->deleteAtLast();
+      imp->deleteAtLast();
+      imp->deleteAtLast();
+      imp->printNodes();          
     } catch(IllegalException e) {
       e.whatMsg();
     }        

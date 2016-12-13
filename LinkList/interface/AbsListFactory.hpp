@@ -23,6 +23,7 @@ public:
   virtual void insertForFirst(Data *node) throw(IllegalException) = 0;
   virtual void insert(char const * name, Data *node) throw(IllegalException) = 0;
   virtual void deleteFirst() throw(IllegalException) = 0;
+  virtual void deleteAtLast() throw(IllegalException) = 0;
 };
 
 #endif // ABS_LIST_FACTORY_H

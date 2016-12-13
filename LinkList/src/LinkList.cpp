@@ -69,6 +69,27 @@ void HsuLinkList::LinkList::Impl::deleteFirst() throw(IllegalException) {
   head = head->next;
 }
 
+void HsuLinkList::LinkList::Impl::deleteAtLast() throw(IllegalException) {
+  if (!isInitializeHeader()) throw IllegalException("delete at last fail");        
+  Data *ptr = head;
+  Data *previous = head;
+  while(ptr->next != NULL) { ptr = ptr->next; }  
+  
+  // previous = head = ptr
+  // head = null  
+  if (previous == ptr && previous == head) {
+    Data **p = &head;
+    *p = NULL;
+  }
+  // moveing to position of ptr, set ptr.next = null  
+  else {
+    while(previous->next != ptr) {
+      previous = previous->next;      
+    }  
+    previous->next = NULL;   
+  } 
+}
+
 void HsuLinkList::LinkList::Impl::printNodes() const {
   Data *ptr = head;
   printf("%s\n", "====================================");
