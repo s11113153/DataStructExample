@@ -14,9 +14,26 @@ extern "C" {
 #include "../interface/AbsListFactory.hpp"
 #include "../exception/IllegalException.hpp"
 
-int main(int argc, char const *argv[]) {  
+namespace {  
+  inline namespace LinkListExample {
+    void callLinkList();      
+  } 
+  inline namespace DoubleLinkListExample {
+    void callDoubleLinkList();
+  }
+  inline namespace CircularLinkListExample {
+    void callCircularLinkList();    
+  } 
+} 
+
+int main(int argc, char const *argv[]) {      
+  LinkListExample::callLinkList();
+  return EXIT_SUCCESS;
+}
+
+void LinkListExample::callLinkList() {
   using namespace std;  
-  using namespace HsuLinkList;
+  using  HsuLinkList::v1::LinkList;
   LinkList list;    
   list.getFactory([&](AbsListFactory* imp) -> void {    
     Data *root;  
@@ -56,6 +73,6 @@ int main(int argc, char const *argv[]) {
     } catch(IllegalException e) {
       e.whatMsg();
     }        
-  });  
-  return EXIT_SUCCESS;
+  });    
 }
+

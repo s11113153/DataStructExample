@@ -1,29 +1,29 @@
 /*================================================================================================*/
 #include "LinkList.hpp"
 
-HsuLinkList::LinkList::LinkList() { 
+HsuLinkList::v1::LinkList::LinkList() { 
   // do nothing
 }
 
-HsuLinkList::LinkList::~LinkList() {  
+HsuLinkList::v1::LinkList::~LinkList() {  
 }
 
-void HsuLinkList::LinkList::getFactory(std::function<void(AbsListFactory*)> callback) {
+void HsuLinkList::v1::LinkList::getFactory(std::function<void(AbsListFactory*)> callback) {
   callback(&impl);
 }
 
 /*================================================================================================*/
 
-HsuLinkList::LinkList::Impl::Impl() {
+HsuLinkList::v1::LinkList::Impl::Impl() {
 	head = NULL;
 }
-HsuLinkList::LinkList::Impl::~Impl() {  
+HsuLinkList::v1::LinkList::Impl::~Impl() {  
   head = NULL;  
   delete head;
   printf("head is deleted %p\n", head);
 }
 
-void HsuLinkList::LinkList::Impl::createHeader(Data **root) {        
+void HsuLinkList::v1::LinkList::Impl::createHeader(Data **root) {        
   char nil[] = "nil";
   Data d(nil, -1);  
   *root = new Data(nil, -1);
@@ -31,13 +31,13 @@ void HsuLinkList::LinkList::Impl::createHeader(Data **root) {
   head = (*root);      
 }
 
-void HsuLinkList::LinkList::Impl::insertForFirst(Data *node) throw(IllegalException) {
+void HsuLinkList::v1::LinkList::Impl::insertForFirst(Data *node) throw(IllegalException) {
   if (!isInitializeHeader()) throw IllegalException("head is null, please call createHeader method.");      
   node->next = head;
   head = node;  
 }
 
-void HsuLinkList::LinkList::Impl::insert(Data *node) throw(IllegalException) {    
+void HsuLinkList::v1::LinkList::Impl::insert(Data *node) throw(IllegalException) {    
   if (!isInitializeHeader()) throw IllegalException("head is null, please call createHeader method.");    
 
   Data *tail = head;  
@@ -47,7 +47,7 @@ void HsuLinkList::LinkList::Impl::insert(Data *node) throw(IllegalException) {
   tail->next = node;         
 }
 
-void HsuLinkList::LinkList::Impl::insert(char const * name, Data *node) throw(IllegalException) {
+void HsuLinkList::v1::LinkList::Impl::insert(char const * name, Data *node) throw(IllegalException) {
   Data *ptr = head;
   while(ptr != NULL) {
     // found specifics data and insert it to behind
@@ -64,12 +64,12 @@ void HsuLinkList::LinkList::Impl::insert(char const * name, Data *node) throw(Il
   printf("Insert is fail, data \"%s\": not found !!!\n", name);
 }
 
-void HsuLinkList::LinkList::Impl::deleteFirst() throw(IllegalException) {
+void HsuLinkList::v1::LinkList::Impl::deleteFirst() throw(IllegalException) {
   if (!isInitializeHeader()) throw IllegalException("head is null");  
   head = head->next;
 }
 
-void HsuLinkList::LinkList::Impl::deleteAtLast() throw(IllegalException) {
+void HsuLinkList::v1::LinkList::Impl::deleteAtLast() throw(IllegalException) {
   if (!isInitializeHeader()) throw IllegalException("delete at last fail");        
   Data *ptr = head;
   Data *previous = head;
@@ -92,7 +92,7 @@ void HsuLinkList::LinkList::Impl::deleteAtLast() throw(IllegalException) {
   } 
 }
 
-void HsuLinkList::LinkList::Impl::deleteDataWithSpecificedName(char const * name) throw(IllegalException) {
+void HsuLinkList::v1::LinkList::Impl::deleteDataWithSpecificedName(char const * name) throw(IllegalException) {
   Data *ptr = head;
   Data *previous = head;
   bool isFound = false;
@@ -120,7 +120,7 @@ void HsuLinkList::LinkList::Impl::deleteDataWithSpecificedName(char const * name
   }
 }
 
-void HsuLinkList::LinkList::Impl::reverse() throw(IllegalException) {
+void HsuLinkList::v1::LinkList::Impl::reverse() throw(IllegalException) {
   Data *p = head;
   Data *q = NULL;
   Data *r = NULL;
@@ -134,7 +134,7 @@ void HsuLinkList::LinkList::Impl::reverse() throw(IllegalException) {
   head = q;
 }
 
-void HsuLinkList::LinkList::Impl::printNodes() const {
+void HsuLinkList::v1::LinkList::Impl::printNodes() const {
   Data *ptr = head;
   printf("%s\n", "====================================");
   while (ptr != NULL) {
