@@ -6,6 +6,7 @@ HsuLinkList::v1::LinkList::LinkList() {
 }
 
 HsuLinkList::v1::LinkList::~LinkList() {  
+  // do nothing
 }
 
 void HsuLinkList::v1::LinkList::getFactory(std::function<void(AbsListFactory*)> callback) {
@@ -19,16 +20,14 @@ HsuLinkList::v1::LinkList::Impl::Impl() {
 }
 HsuLinkList::v1::LinkList::Impl::~Impl() {  
   head = NULL;  
-  delete head;
-  printf("head is deleted %p\n", head);
+  printf(" head: is deinitialize. %p\n", head);
 }
 
-void HsuLinkList::v1::LinkList::Impl::createHeader(Data **root) {        
+void HsuLinkList::v1::LinkList::Impl::createHeader(std::shared_ptr<Data> &root) {        
+  if (head != NULL) head = NULL;
   char nil[] = "nil";
-  Data d(nil, -1);  
-  *root = new Data(nil, -1);
-  (*root)->age = -1;   
-  head = (*root);      
+  root = std::make_shared<Data>(nil, -1);
+  head = root.get();
 }
 
 void HsuLinkList::v1::LinkList::Impl::insertForFirst(Data *node) throw(IllegalException) {

@@ -17,7 +17,7 @@ extern "C" {
 #include "../interface/AbsListFactory.hpp"
 #include <stdexcept> 
 #include <functional>
-
+#include <memory>
 
 namespace HsuLinkList {
   inline namespace v1 {    
@@ -26,17 +26,17 @@ namespace HsuLinkList {
       class Impl: virtual public AbsListFactory {
       private:
         friend LinkList;
-        Impl();    
-        ~Impl();    
-      public:        
-        Data* head;    
-
+        Impl();   
+        ~Impl();         
+        // std::shared_ptr<Data> head;
+        Data *head;
+      public:                
         // checking header whether initialize
         std::function<bool()> isInitializeHeader = [=]() -> bool {
           return (this->head == NULL) ? false : true;      
         };    
         // createing a new first header
-        virtual void createHeader(Data **root);         
+        virtual void createHeader(std::shared_ptr<Data> &root);         
         // add for first
         virtual void insertForFirst(Data *node) throw(IllegalException);
         // sequence order for add

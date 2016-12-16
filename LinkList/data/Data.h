@@ -18,6 +18,9 @@ struct Data {
     this->age = age;
     strncpy(this->name, name, sizeof(this->name));
   }  
+  ~Data() {
+    printf("%5s: is deinitialize.\n", this->name);
+  }
 };
 #ifdef __cplusplus
 }

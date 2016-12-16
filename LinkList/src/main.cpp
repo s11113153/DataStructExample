@@ -13,6 +13,7 @@ extern "C" {
 #include "LinkList.hpp"
 #include "../interface/AbsListFactory.hpp"
 #include "../exception/IllegalException.hpp"
+#include <memory>
 
 namespace {  
   inline namespace LinkListExample {
@@ -35,9 +36,9 @@ void LinkListExample::callLinkList() {
   using namespace std;  
   using  HsuLinkList::v1::LinkList;
   LinkList list;    
-  list.getFactory([&](AbsListFactory* imp) -> void {    
-    Data *root;  
-    imp->createHeader(&root);        
+  list.getFactory([&](AbsListFactory* imp) -> void {        
+    std::shared_ptr<Data> root;
+    imp->createHeader(root);      
     char a1[] = "A1";
     char a2[] = "A2";
     char a3[] = "A3";
@@ -60,16 +61,18 @@ void LinkListExample::callLinkList() {
       imp->insertForFirst(&first_node);
       imp->insert(&node_4);
       imp->insert(&node_5);
-      imp->insert("1", &node_6);
+      imp->insert("1", &node_6); // insert fail case
       imp->insert("A3", &node_6);
       imp->deleteFirst();  
       imp->deleteFirst();
       imp->deleteAtLast();
       imp->deleteDataWithSpecificedName("A1");
       imp->deleteDataWithSpecificedName("A6");
-      imp->deleteDataWithSpecificedName("A4");
+      imp->deleteDataWithSpecificedName("A4");      
       imp->reverse();
-      imp->printNodes();          
+      imp->insert("A3", &node_6);
+      imp->printNodes();                
+      printf("\n\n\n");
     } catch(IllegalException e) {
       e.whatMsg();
     }        

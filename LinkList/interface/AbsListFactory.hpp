@@ -13,11 +13,12 @@ extern "C" {
 // using c++ lib
 #include <stdexcept> 
 #include <iostream>
+#include <memory>
 #include "../exception/IllegalException.hpp"
 
 class AbsListFactory {
 public:  
-  virtual void createHeader(Data **root) = 0;  
+  virtual void createHeader(std::shared_ptr<Data> &root) = 0;
   virtual void insert(Data *node) throw(IllegalException) = 0;
   virtual void printNodes() const = 0;
   virtual void insertForFirst(Data *node) throw(IllegalException) = 0;
