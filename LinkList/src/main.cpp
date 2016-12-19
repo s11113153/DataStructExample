@@ -15,18 +15,10 @@ extern "C" {
 #include "../exception/IllegalException.hpp"
 #include <memory>
 
-namespace {  
-  inline namespace LinkListExample {
+inline namespace LinkListExample {
     void callLinkList();      
-  } 
-  inline namespace DoubleLinkListExample {
-    void callDoubleLinkList();
-  }
-  inline namespace CircularLinkListExample {
-    void callCircularLinkList();    
-  } 
-} 
-
+}
+ 
 int main(int argc, char const *argv[]) {      
   LinkListExample::callLinkList();
   return EXIT_SUCCESS;
