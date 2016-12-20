@@ -18,9 +18,9 @@ using std::weak_ptr;
 namespace DLinkList {
   class DoubleLinkList {
   private:
-    unique_ptr<Node> head;    
-    Node *foot;
-    Node *now;
+    Node* head;    
+    Node* foot;
+    Node* now;
   public:
     void createHeader(unique_ptr<Node[]> &root, int length);
     Node* get(int index);
