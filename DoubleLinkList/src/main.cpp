@@ -44,7 +44,7 @@ int getRandomIntvalue() {
 int main(int argc, char const *argv[]) {
   srand(signed(time(NULL)));  
   DoubleLinkList dLinkList;
-  unique_ptr<Node[]> root = std::make_unique<Node[]>(ROOT_SIZE);
+  unique_ptr<Node[]> root = std::make_unique<Node[]>(ROOT_SIZE);  
   root[0].setName("abandon-1").setData(getRandomIntvalue());
   root[1].setName("abbreviation-2").setData(getRandomIntvalue());
   root[2].setName("abide-3").setData(getRandomIntvalue());
@@ -52,11 +52,17 @@ int main(int argc, char const *argv[]) {
   root[4].setName("able-5").setData(getRandomIntvalue());
   root[5].setName("abnormal-6").setData(getRandomIntvalue());
   root[6].setName("aboard-7").setData(getRandomIntvalue());
-  dLinkList.createHeader(root, ROOT_SIZE);    
+  dLinkList.createHeader(root, ROOT_SIZE);  
+  dLinkList.insertFirst("BBC", getRandomIntvalue());    
+  dLinkList.insertAt(dLinkList.getByIndex(6), "CNN", getRandomIntvalue());
+  dLinkList.insertAt(dLinkList.getByIndex(4), "Apex", getRandomIntvalue());
+  dLinkList.insertAt(dLinkList.getByIndex(4), "Bee", getRandomIntvalue());
+  dLinkList.insertAtLast("Apple", getRandomIntvalue());
+  dLinkList.insertAtLast("cat", getRandomIntvalue());  
+  dLinkList.deleteAtLast();
+  dLinkList.deleteAtLast();  
+  dLinkList.deleteAt(dLinkList.getByIndex(1));
+  dLinkList.deleteAt(dLinkList.getByIndex(1));
   dLinkList.printNodes();
-  Node *p = dLinkList.get(1);
-
-  printf("%s\n", p->name);
-
   return EXIT_SUCCESS;
 }

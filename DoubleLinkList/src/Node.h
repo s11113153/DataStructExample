@@ -1,34 +1,32 @@
-#ifdef __cplusplus
-extern "C" {
-#endif
+#ifndef _NODE_H
+#define _NODE_H
+
 #include <stdio.h>
 #include <string.h>
-#ifdef __cplusplus
-}
-#endif
+#include <memory>
 
 struct Node {
-public:
+public: 
+  std::shared_ptr<Node> next;
+  std::shared_ptr<Node> prev;
   char name[20];
   int data;
-  struct Node *next;
-  struct Node *prev;
 
   Node() {
     data = -1;
-    memset(this->name, '\0', sizeof(name));    
-    memset(&next, 0, sizeof(Node*));
-    memset(&prev, 0, sizeof(Node*));
-    printf("node is initialized.\n");
+    next = NULL;
+    prev = NULL;
+    memset(this->name, '\0', sizeof(name));  
+    // printf("node is initialized.\n");
   }
 
-  Node(const char * name, int data): Node() {    
+  Node(char const * name, int data): Node() {    
     setName(name);
     setData(data);    
   }
 
-  Node & setName(char const * x) {
-    strncpy(this->name, x, sizeof(this->name));
+  Node & setName(char const * name) {
+    strncpy(this->name, name, sizeof(this->name));
     return *this;
   }
 
@@ -37,7 +35,8 @@ public:
     return *this;
   }
 
-  ~Node() {
-    printf("%s is deinitialized.\n", this->name);
+  ~Node() {    
+    // printf("%s is deinitialized.\n", this->name);
   }
 };
+#endif
