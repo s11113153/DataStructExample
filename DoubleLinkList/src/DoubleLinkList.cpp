@@ -24,7 +24,6 @@ void DLinkList::DoubleLinkList::createHeader(unique_ptr<Node[]> &root, int lengt
       llink = newnode;
     }    
   }      
-  printNodes();
 }
 
 void DLinkList::DoubleLinkList::printNodes() {  
@@ -35,4 +34,19 @@ void DLinkList::DoubleLinkList::printNodes() {
     ptr = ptr->next;
   }
   printf("=================================================\n");
+}
+
+
+Node* DLinkList::DoubleLinkList::get(int index) {
+  Node *ptr = head.get();
+  int count = 0;
+  while(ptr != NULL) {
+    if (count == index) {
+      printf("%s\n", "i found it");
+      break;
+    }
+    count ++;    
+    ptr = ptr->next;
+  }
+  return ptr;
 }

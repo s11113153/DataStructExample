@@ -53,5 +53,9 @@ int main(int argc, char const *argv[]) {
   root[5].setName("abnormal-6").setData(getRandomIntvalue());
   root[6].setName("aboard-7").setData(getRandomIntvalue());
   dLinkList.createHeader(root, ROOT_SIZE);    
+  Node *p = dLinkList.get(1);
+
+  printf("%s\n", p->name);
+
   return EXIT_SUCCESS;
 }

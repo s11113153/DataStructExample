@@ -18,13 +18,12 @@ using std::weak_ptr;
 namespace DLinkList {
   class DoubleLinkList {
   private:
-    unique_ptr<Node> head;
-    
+    unique_ptr<Node> head;    
     Node *foot;
     Node *now;
   public:
     void createHeader(unique_ptr<Node[]> &root, int length);
-    // weak_ptr<Node> get(int data);
+    Node* get(int index);
     // bool hasNext();
     // weak_ptr<Node> previous(int data);
     // weak_ptr<Node> next(int data);
