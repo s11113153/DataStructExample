@@ -18,6 +18,8 @@ namespace DLinkList {
   private:
     std::shared_ptr<Node> head;
     std::shared_ptr<Node> foot;
+    // TODO: it is used for previous(), next() methods    
+    std::weak_ptr<Node> now;
   public:
     void createHeader(std::unique_ptr<Node[]> &root, int length);
     void insertFirst(char const * name, const int data);
@@ -27,9 +29,13 @@ namespace DLinkList {
     void insertAtLast(char const * name, const int data);
     void deleteAtLast();
     void deleteAt(std::shared_ptr<Node> ptr);
-    void deleteFirst();
+    void deleteFirst();        
     DoubleLinkList();
     ~DoubleLinkList();
+    // TODO: Not implementation
+    std::weak_ptr<Node> previous();    
+    // TODO: Not implementation
+    std::weak_ptr<Node> next();
   };
 }
 #endif
