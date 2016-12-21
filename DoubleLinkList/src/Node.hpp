@@ -22,28 +22,28 @@ struct Node {
   int data;
 
   Node() {
-	data = -1;
+    data = -1;
     memset(this->name, '\0', sizeof(name));		
-	  inits++;
+    inits++;
   }
 
   Node(char const * name, int data) : Node() {		
     setName(name);
-	  setData(data);		
+    setData(data);		
   }
 
   Node & setName(char const * name) {
     strncpy(this->name, name, sizeof(this->name));
-	  return *this;
+    return *this;
   }
 
   Node & setData(const int data) {
-	  this->data = data;
-	  return *this;
+    this->data = data;
+    return *this;
   }
 
   ~Node() {
-	  deinits++;		
+    deinits++;		
   }
 };
 #endif

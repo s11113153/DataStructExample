@@ -15,18 +15,18 @@ DLinkList::DoubleLinkList::~DoubleLinkList() {
 void DLinkList::DoubleLinkList::createHeader(std::unique_ptr<Node[]> &root, int length) {
   Node *ptr = root.get();
   if (ptr == NULL) {
-	head = std::make_shared<Node>("system_root", 0);
+    head = std::make_shared<Node>("system_root", 0);
   }
   else {
-	head = std::make_shared<Node>(ptr[0].name, ptr[0].data);
-	auto llink = head;
-	for (size_t i = 1; i < length; i++) {			
-	  auto newnode = std::make_shared<Node>(ptr[i].name, ptr[i].data);
-	  llink->next = newnode;
-	  newnode->prev = llink;
-	  llink = newnode;			
-	  foot = newnode;
-	}		
+    head = std::make_shared<Node>(ptr[0].name, ptr[0].data);
+    auto llink = head;
+    for (size_t i = 1; i < length; i++) {			
+      auto newnode = std::make_shared<Node>(ptr[i].name, ptr[i].data);
+      llink->next = newnode;
+      newnode->prev = llink;
+      llink = newnode;			
+      foot = newnode;
+    }		
   }	
 }
 
@@ -43,7 +43,7 @@ void DLinkList::DoubleLinkList::printNodes() {
   printf("=================================================\n");
   while (ptr != NULL) {
     printf("name: %15s data: %d use_count: %d \n", ptr->name, ptr->data, ptr.use_count());
-	ptr = ptr->next;
+    ptr = ptr->next;
   }
   printf("=================================================\n");
 }
@@ -61,8 +61,8 @@ std::shared_ptr<Node> DLinkList::DoubleLinkList::getByIndex(int index) {
   int count = 0;
   while (ptr != NULL) {
     if (count == index) break;
-	count++;
-	ptr = ptr->next;
+    count++;
+    ptr = ptr->next;
   }
   return ptr;
 }
